@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7CBF61B4-2F02-4227-AC87-5B974F9BA384}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JacksonVeroneze.NET.Pagination", "src\JacksonVeroneze.NET.Pagination\JacksonVeroneze.NET.Pagination.csproj", "{71807EEB-8DC2-4605-B512-96A33E9386D2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4617355E-6977-4D9A-B60E-7967E0B2F140}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		global.json = global.json
+		LICENSE = LICENSE
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{71807EEB-8DC2-4605-B512-96A33E9386D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71807EEB-8DC2-4605-B512-96A33E9386D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71807EEB-8DC2-4605-B512-96A33E9386D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71807EEB-8DC2-4605-B512-96A33E9386D2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{71807EEB-8DC2-4605-B512-96A33E9386D2} = {7CBF61B4-2F02-4227-AC87-5B974F9BA384}
+	EndGlobalSection
+EndGlobal
