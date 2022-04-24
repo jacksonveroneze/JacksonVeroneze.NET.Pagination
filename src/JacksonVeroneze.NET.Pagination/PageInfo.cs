@@ -4,24 +4,32 @@ namespace JacksonVeroneze.NET.Pagination
     {
         public int TotalPages { get; set; }
 
-        public int TotalElements { get; set;}
+        public int TotalElements { get; set; }
 
-        public PageInfo(PaginationParameters parameters,
+        public static PageInfo FactoryPageInfo(PaginationParameters parameters,
             int totalPages,
-            int totalElements) : base(
-            parameters.Page, parameters.PageSize,
-            parameters.Direction, parameters.OrderBy)
+            int totalElements)
         {
-            TotalPages = totalPages;
-            TotalElements = totalElements;
+            return new PageInfo
+            {
+                Page = parameters.Page,
+                PageSize = parameters.PageSize,
+                TotalPages = totalPages,
+                TotalElements = totalElements
+            };
         }
 
-        public PageInfo(int page, int pageSize,
+        public static PageInfo FactoryPageInfo(int page, int pageSize,
             int totalPages,
-            int totalElements) : base(page, pageSize)
+            int totalElements)
         {
-            TotalPages = totalPages;
-            TotalElements = totalElements;
+            return new PageInfo
+            {
+                Page = page,
+                PageSize = pageSize,
+                TotalPages = totalPages,
+                TotalElements = totalElements
+            };
         }
     }
 }
