@@ -2,9 +2,9 @@ namespace JacksonVeroneze.NET.Pagination
 {
     public class PageInfo : PaginationParameters
     {
-        public int TotalPages { get; }
+        public int TotalPages { get; set; }
 
-        public int TotalElements { get; }
+        public int TotalElements { get; set;}
 
         public PageInfo(PaginationParameters parameters,
             int totalPages,

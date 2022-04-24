@@ -4,9 +4,9 @@ namespace JacksonVeroneze.NET.Pagination
 {
     public class Page<T>
     {
-        public ICollection<T> Data { get; }
+        public ICollection<T> Data { get; set;}
 
-        public PageInfo Pagination { get; }
+        public PageInfo Pagination { get; set;}
 
         public Page(ICollection<T> data, PageInfo pagination)
         {
