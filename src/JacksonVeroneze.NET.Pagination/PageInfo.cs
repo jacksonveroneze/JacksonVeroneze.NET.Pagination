@@ -6,6 +6,11 @@ namespace JacksonVeroneze.NET.Pagination
 
         public int TotalElements { get; set;}
 
+        public PageInfo()
+        {
+            
+        }
+        
         public PageInfo(PaginationParameters parameters,
             int totalPages,
             int totalElements) : base(
