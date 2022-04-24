@@ -15,5 +15,13 @@ namespace JacksonVeroneze.NET.Pagination
             TotalPages = totalPages;
             TotalElements = totalElements;
         }
+
+        public PageInfo(int page, int pageSize,
+            int totalPages,
+            int totalElements) : base(page, pageSize)
+        {
+            TotalPages = totalPages;
+            TotalElements = totalElements;
+        }
     }
 }
