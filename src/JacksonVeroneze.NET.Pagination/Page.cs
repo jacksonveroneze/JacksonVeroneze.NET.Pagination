@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 namespace JacksonVeroneze.NET.Pagination
 {
     public class Page<T>

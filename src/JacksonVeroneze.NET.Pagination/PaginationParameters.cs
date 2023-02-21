@@ -2,17 +2,13 @@ namespace JacksonVeroneze.NET.Pagination
 {
     public class PaginationParameters
     {
-        public int Page { get; set; }
+        public int Page { get; }
 
-        public int PageSize { get; set; }
+        public int PageSize { get; }
 
-        public SortDirection Direction { get; set; }
+        public string? OrderBy { get; }
 
-        public string OrderBy { get; set; }
-
-        public PaginationParameters()
-        {
-        }
+        public SortDirection? Direction { get; }
 
         public PaginationParameters(int page, int pageSize)
         {
@@ -21,10 +17,10 @@ namespace JacksonVeroneze.NET.Pagination
         }
 
         public PaginationParameters(int page, int pageSize,
-            SortDirection direction, string orderBy) : this(page, pageSize)
+            string orderBy, SortDirection direction) : this(page, pageSize)
         {
-            Direction = direction;
             OrderBy = orderBy;
+            Direction = direction;
         }
     }
 }
