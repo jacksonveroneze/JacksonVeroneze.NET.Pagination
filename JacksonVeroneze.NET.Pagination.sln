@@ -21,6 +21,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JacksonVeroneze.NET.Paginat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JacksonVeroneze.NET.Pagination.Util", "tests\JacksonVeroneze.NET.Pagination.Util\JacksonVeroneze.NET.Pagination.Util.csproj", "{A102A3C0-9D99-43D6-A449-92791CDA31D8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "github", "github", "{80D20CE3-ADD2-476A-8545-CB0269C0FAB4}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\run-commit-linter.yml = .github\workflows\run-commit-linter.yml
+		.github\workflows\run-create-package.yml = .github\workflows\run-create-package.yml
+		.github\workflows\run-pr-assign.yml = .github\workflows\run-pr-assign.yml
+		.github\workflows\run-unit-tests.yaml = .github\workflows\run-unit-tests.yaml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,5 +55,6 @@ Global
 		{71807EEB-8DC2-4605-B512-96A33E9386D2} = {7CBF61B4-2F02-4227-AC87-5B974F9BA384}
 		{542A8FC5-1133-440C-B7E1-B078502D6563} = {ADD83F01-F068-49AC-A640-041F05741739}
 		{A102A3C0-9D99-43D6-A449-92791CDA31D8} = {ADD83F01-F068-49AC-A640-041F05741739}
+		{80D20CE3-ADD2-476A-8545-CB0269C0FAB4} = {4617355E-6977-4D9A-B60E-7967E0B2F140}
 	EndGlobalSection
 EndGlobal
