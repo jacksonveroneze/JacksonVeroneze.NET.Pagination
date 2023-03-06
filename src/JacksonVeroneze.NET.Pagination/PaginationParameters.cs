@@ -12,7 +12,19 @@ namespace JacksonVeroneze.NET.Pagination
 
         public PaginationParameters(int page, int pageSize)
         {
-            Page = page;
+            if (page < 0)
+            {
+                throw new ArgumentException(
+                    $"Argument '{nameof(page)}' must be greater than or equal to zero");
+            }
+
+            if (pageSize <= 0)
+            {
+                throw new ArgumentException(
+                    $"Argument '{nameof(pageSize)}' must be greater than zero");
+            }
+
+            Page = page > 0 ? page : 1;
             PageSize = pageSize;
         }
 
@@ -21,6 +33,13 @@ namespace JacksonVeroneze.NET.Pagination
         {
             OrderBy = orderBy;
             Direction = direction;
+        }
+
+        public override string ToString()
+        {
+            return $"{nameof(PaginationParameters)}: " +
+                   $"Page: {Page} - PageSize: {PageSize} - " +
+                   $"OrderBy: {OrderBy} - Direction: {Direction}";
         }
     }
 }

@@ -8,6 +8,9 @@ namespace JacksonVeroneze.NET.Pagination
 
         public Page(ICollection<T> data, PageInfo pagination)
         {
+            ArgumentNullException.ThrowIfNull(data, nameof(data));
+            ArgumentNullException.ThrowIfNull(pagination, nameof(pagination));
+
             Data = data;
             Pagination = pagination;
         }
