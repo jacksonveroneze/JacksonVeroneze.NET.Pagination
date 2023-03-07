@@ -1,5 +1,3 @@
-using Ardalis.GuardClauses;
-
 namespace JacksonVeroneze.NET.Pagination;
 
 public class PageInfo
@@ -15,9 +13,8 @@ public class PageInfo
         TotalElements = totalElements;
     }
 
-    public PageInfo(int page, int pageSize,
-        int totalElements, string? orderBy,
-        SortDirection? direction)
+    public PageInfo(int page, int pageSize, int totalElements,
+        string? orderBy, SortDirection? direction)
         : this(page, pageSize, totalElements)
     {
         OrderBy = orderBy;

@@ -1,5 +1,3 @@
-using Ardalis.GuardClauses;
-
 namespace JacksonVeroneze.NET.Pagination;
 
 public class PaginationParameters
@@ -14,7 +12,7 @@ public class PaginationParameters
     }
 
     public PaginationParameters(int page, int pageSize,
-        string orderBy, SortDirection direction) : this(page, pageSize)
+        string? orderBy, SortDirection? direction) : this(page, pageSize)
     {
         OrderBy = orderBy;
         Direction = direction;

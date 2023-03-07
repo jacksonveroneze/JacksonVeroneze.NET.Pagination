@@ -17,7 +17,8 @@ public class PageInfoTests
         // -------------------------------------------------------
         // Act
         // -------------------------------------------------------
-        PageInfo pageInfo = new(page, pageSize, totalElements);
+        PageInfo pageInfo = new(page, pageSize,
+            totalElements, "field", SortDirection.Ascending);
 
         // -------------------------------------------------------
         // Assert
@@ -40,7 +41,8 @@ public class PageInfoTests
         // -------------------------------------------------------
         // Act
         // -------------------------------------------------------
-        PageInfo pageInfo = new(page, pageSize, totalElements);
+        PageInfo pageInfo = new(page, pageSize,
+            totalElements, "field", SortDirection.Ascending);
 
         // -------------------------------------------------------
         // Assert
@@ -66,7 +68,8 @@ public class PageInfoTests
         // -------------------------------------------------------
         // Act
         // -------------------------------------------------------
-        PageInfo pageInfo = new(page, pageSize, totalElements);
+        PageInfo pageInfo = new(page, pageSize,
+            totalElements, "field", SortDirection.Ascending);
 
         // -------------------------------------------------------
         // Assert
@@ -91,8 +94,8 @@ public class PageInfoTests
         // -------------------------------------------------------
         // Arrange && Act
         // -------------------------------------------------------
-        Action action = () =>
-            new PageInfo(page, pageSize, totalElements);
+        Action action = () => new PageInfo(page, pageSize,
+            totalElements, "field", SortDirection.Ascending);
 
         // -------------------------------------------------------
         // Assert
