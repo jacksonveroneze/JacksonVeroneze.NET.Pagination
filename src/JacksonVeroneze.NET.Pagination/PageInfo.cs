@@ -1,53 +1,52 @@
 using Ardalis.GuardClauses;
 
-namespace JacksonVeroneze.NET.Pagination
+namespace JacksonVeroneze.NET.Pagination;
+
+public class PageInfo
 {
-    public class PageInfo
+    public PageInfo(int page, int pageSize, int totalElements)
     {
-        public int Page { get; }
+        Guard.Against.NegativeOrZero(page, nameof(page));
+        Guard.Against.NegativeOrZero(pageSize, nameof(pageSize));
+        Guard.Against.Negative(totalElements, nameof(totalElements));
 
-        public int PageSize { get; }
+        Page = page;
+        PageSize = pageSize;
+        TotalElements = totalElements;
+    }
 
-        public int TotalElements { get; }
+    public PageInfo(int page, int pageSize,
+        int totalElements, string? orderBy,
+        SortDirection? direction)
+        : this(page, pageSize, totalElements)
+    {
+        OrderBy = orderBy;
+        Direction = direction;
+    }
 
-        public string? OrderBy { get; }
+    public int Page { get; }
 
-        public SortDirection? Direction { get; }
+    public int PageSize { get; }
 
-        public int TotalPages =>
-            TotalElements > 0 ? (int)Math.Ceiling(TotalElements / (decimal)PageSize) : 0;
+    public int TotalElements { get; }
 
-        public bool IsFirstPage => Page == 1;
+    public string? OrderBy { get; }
 
-        public bool IsLastPage => Page == TotalPages;
+    public SortDirection? Direction { get; }
 
-        public PageInfo(int page, int pageSize, int totalElements)
-        {
-            Guard.Against.NegativeOrZero(page, nameof(page));
-            Guard.Against.NegativeOrZero(pageSize, nameof(pageSize));
-            Guard.Against.Negative(totalElements, nameof(totalElements));
+    public int TotalPages =>
+        TotalElements > 0 ? (int)Math.Ceiling(TotalElements / (decimal)PageSize) : 0;
 
-            Page = page;
-            PageSize = pageSize;
-            TotalElements = totalElements;
-        }
+    public bool IsFirstPage => Page == 1;
 
-        public PageInfo(int page, int pageSize,
-            int totalElements, string? orderBy,
-            SortDirection? direction)
-            : this(page, pageSize, totalElements)
-        {
-            OrderBy = orderBy;
-            Direction = direction;
-        }
+    public bool IsLastPage => Page == TotalPages;
 
-        public override string ToString()
-        {
-            return $"{nameof(PageInfo)}: " +
-                   $"Page: {Page} - PageSize: {PageSize} - " +
-                   $"TotalElements: {TotalElements} - OrderBy: {OrderBy} - " +
-                   $"Direction: {Direction} - TotalPages: {TotalPages} - " +
-                   $"IsFirstPage: {IsFirstPage} - IsLastPage: {IsLastPage}";
-        }
+    public override string ToString()
+    {
+        return $"{nameof(PageInfo)}: " +
+               $"Page: {Page} - PageSize: {PageSize} - " +
+               $"TotalElements: {TotalElements} - OrderBy: {OrderBy} - " +
+               $"Direction: {Direction} - TotalPages: {TotalPages} - " +
+               $"IsFirstPage: {IsFirstPage} - IsLastPage: {IsLastPage}";
     }
 }

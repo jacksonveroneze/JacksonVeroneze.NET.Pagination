@@ -1,38 +1,37 @@
 using Ardalis.GuardClauses;
 
-namespace JacksonVeroneze.NET.Pagination
+namespace JacksonVeroneze.NET.Pagination;
+
+public class PaginationParameters
 {
-    public class PaginationParameters
+    public PaginationParameters(int page, int pageSize)
     {
-        public int Page { get; }
+        Guard.Against.Negative(page, nameof(page));
+        Guard.Against.NegativeOrZero(pageSize, nameof(pageSize));
 
-        public int PageSize { get; }
+        Page = page > 0 ? page : 1;
+        PageSize = pageSize;
+    }
 
-        public string? OrderBy { get; }
+    public PaginationParameters(int page, int pageSize,
+        string orderBy, SortDirection direction) : this(page, pageSize)
+    {
+        OrderBy = orderBy;
+        Direction = direction;
+    }
 
-        public SortDirection? Direction { get; }
+    public int Page { get; }
 
-        public PaginationParameters(int page, int pageSize)
-        {
-            Guard.Against.Negative(page, nameof(page));
-            Guard.Against.NegativeOrZero(pageSize, nameof(pageSize));
+    public int PageSize { get; }
 
-            Page = page > 0 ? page : 1;
-            PageSize = pageSize;
-        }
+    public string? OrderBy { get; }
 
-        public PaginationParameters(int page, int pageSize,
-            string orderBy, SortDirection direction) : this(page, pageSize)
-        {
-            OrderBy = orderBy;
-            Direction = direction;
-        }
+    public SortDirection? Direction { get; }
 
-        public override string ToString()
-        {
-            return $"{nameof(PaginationParameters)}: " +
-                   $"Page: {Page} - PageSize: {PageSize} - " +
-                   $"OrderBy: {OrderBy} - Direction: {Direction}";
-        }
+    public override string ToString()
+    {
+        return $"{nameof(PaginationParameters)}: " +
+               $"Page: {Page} - PageSize: {PageSize} - " +
+               $"OrderBy: {OrderBy} - Direction: {Direction}";
     }
 }
