@@ -1,3 +1,5 @@
+using Ardalis.GuardClauses;
+
 namespace JacksonVeroneze.NET.Pagination
 {
     public class PaginationParameters
@@ -12,17 +14,8 @@ namespace JacksonVeroneze.NET.Pagination
 
         public PaginationParameters(int page, int pageSize)
         {
-            if (page < 0)
-            {
-                throw new ArgumentException(
-                    $"Argument '{nameof(page)}' must be greater than or equal to zero");
-            }
-
-            if (pageSize <= 0)
-            {
-                throw new ArgumentException(
-                    $"Argument '{nameof(pageSize)}' must be greater than zero");
-            }
+            Guard.Against.Negative(page, nameof(page));
+            Guard.Against.NegativeOrZero(pageSize, nameof(pageSize));
 
             Page = page > 0 ? page : 1;
             PageSize = pageSize;
