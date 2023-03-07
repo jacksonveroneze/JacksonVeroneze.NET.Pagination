@@ -16,7 +16,8 @@ public class PaginationParametersTests
         // -------------------------------------------------------
         // Act
         // -------------------------------------------------------
-        PaginationParameters parameters = new(page, pageSize);
+        PaginationParameters parameters =
+            new(page, pageSize, "field", SortDirection.Ascending);
 
         // -------------------------------------------------------
         // Assert
@@ -38,7 +39,8 @@ public class PaginationParametersTests
         // -------------------------------------------------------
         // Act
         // -------------------------------------------------------
-        PaginationParameters parameters = new(page, pageSize);
+        PaginationParameters parameters =
+            new(page, pageSize, "field", SortDirection.Ascending);
 
         // -------------------------------------------------------
         // Assert
@@ -58,8 +60,8 @@ public class PaginationParametersTests
         // -------------------------------------------------------
         // Arrange && Act
         // -------------------------------------------------------
-        Action action = () =>
-            new PaginationParameters(page, pageSize);
+        Action action = () => new PaginationParameters(
+            page, pageSize, "field", SortDirection.Ascending);
 
         // -------------------------------------------------------
         // Assert
