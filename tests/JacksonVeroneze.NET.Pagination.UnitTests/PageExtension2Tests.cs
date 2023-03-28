@@ -110,6 +110,4 @@ public class PageExtensionTests2
     }
 
     #endregion
-
-
 }
