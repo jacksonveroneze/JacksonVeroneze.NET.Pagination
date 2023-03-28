@@ -10,7 +10,7 @@ public class PageMemoryExtensionTests
     #region From_PaginationParameters
 
     [Theory(DisplayName = nameof(PageMemoryExtension)
-                          + nameof(PageMemoryExtension.ToPageFromMemory)
+                          + nameof(PageMemoryExtension.ToPageInMemory)
                           + " : From PaginationParameters - Success")]
     [InlineData(20, 2, 5, 200)]
     [InlineData(50, 2, 10, 100)]
@@ -30,7 +30,7 @@ public class PageMemoryExtensionTests
         // Act
         // -------------------------------------------------------
         Page<User> result = data
-            .ToPageFromMemory(pagination, totalElements);
+            .ToPageInMemory(pagination, totalElements);
 
         // -------------------------------------------------------
         // Assert
@@ -63,7 +63,7 @@ public class PageMemoryExtensionTests
     }
 
     [Fact(DisplayName = nameof(PageMemoryExtension)
-                        + nameof(PageMemoryExtension.ToPageFromMemory)
+                        + nameof(PageMemoryExtension.ToPageInMemory)
                         + " : From PaginationParameters"
                         + " (Invalid Data: Source) - ThrowException")]
     public void From_PaginationParameters_InvalidData_Source_ThrowException()
@@ -78,7 +78,7 @@ public class PageMemoryExtensionTests
         // -------------------------------------------------------
         // Act
         // -------------------------------------------------------
-        Action action = () => data!.ToPageFromMemory(pagination);
+        Action action = () => data!.ToPageInMemory(pagination);
 
         // -------------------------------------------------------
         // Assert
@@ -88,7 +88,7 @@ public class PageMemoryExtensionTests
     }
 
     [Fact(DisplayName = nameof(PageMemoryExtension)
-                        + nameof(PageMemoryExtension.ToPageFromMemory)
+                        + nameof(PageMemoryExtension.ToPageInMemory)
                         + " : From PaginationParameters"
                         + " (Invalid Data: Pagination) - ThrowException")]
     public void From_PaginationParameters_InvalidData_Pagination_ThrowException()
@@ -103,7 +103,7 @@ public class PageMemoryExtensionTests
         // -------------------------------------------------------
         // Act
         // -------------------------------------------------------
-        Action action = () => data.ToPageFromMemory(pagination!);
+        Action action = () => data.ToPageInMemory(pagination!);
 
         // -------------------------------------------------------
         // Assert

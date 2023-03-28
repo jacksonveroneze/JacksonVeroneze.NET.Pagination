@@ -2,7 +2,7 @@ namespace JacksonVeroneze.NET.Pagination.Extensions;
 
 public static class PageMemoryExtension
 {
-    public static Page<TType> ToPageFromMemory<TType>(
+    public static Page<TType> ToPageInMemory<TType>(
         this ICollection<TType> source,
         PaginationParameters pagination,
         int? totalElements = null)
