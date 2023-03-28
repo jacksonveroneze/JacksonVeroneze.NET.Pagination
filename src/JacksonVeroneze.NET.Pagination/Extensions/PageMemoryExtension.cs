@@ -11,10 +11,10 @@ public static class PageMemoryExtension
         ArgumentNullException.ThrowIfNull(source, nameof(source));
         ArgumentNullException.ThrowIfNull(pagination, nameof(pagination));
 
-        return GerPage(source, pagination, totalElements);
+        return GetPage(source, pagination, totalElements);
     }
 
-    private static Page<TType> GerPage<TType>(
+    private static Page<TType> GetPage<TType>(
         ICollection<TType> source,
         PaginationParameters pagination,
         int? totalElements = null)
