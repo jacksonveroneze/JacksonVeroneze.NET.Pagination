@@ -7,11 +7,11 @@ public static class PageExtension
         PaginationParameters pagination)
         where TType : class
     {
-        ArgumentException.ThrowIfNullOrEmpty(
-            nameof(source), nameof(source));
+        ArgumentNullException.ThrowIfNull(
+            source, nameof(source));
 
-        ArgumentException.ThrowIfNullOrEmpty(
-            nameof(pagination), nameof(pagination));
+        ArgumentNullException.ThrowIfNull(
+            pagination, nameof(pagination));
 
         return FactoryPage(source, pagination);
     }
@@ -21,8 +21,8 @@ public static class PageExtension
         int page, int pageSize, int? totalElements = null)
         where TType : class
     {
-        ArgumentException.ThrowIfNullOrEmpty(
-            nameof(source), nameof(source));
+        ArgumentNullException.ThrowIfNull(
+            source, nameof(source));
 
         return FactoryPage(source, page, pageSize, totalElements);
     }
