@@ -9,22 +9,25 @@ public class PageExtensionTests
 {
     #region From_PaginationParameters
 
-    [Fact(DisplayName = nameof(PageExtension)
-                        + nameof(PageExtension.ToPage)
-                        + " : ToPage from PaginationParameters success")]
-    public void ToPage_From_PaginationParameters_Success()
+    [Theory(DisplayName = nameof(PageExtension)
+                          + nameof(PageExtension.ToPage)
+                          + " : From PaginationParameters - Success")]
+    [InlineData(20, 1, null)]
+    [InlineData(20, 1, 100)]
+    public void From_PaginationParameters_Success(
+        int size, int page, int? totalElements = null)
     {
         // -------------------------------------------------------
         // Arrange
         // -------------------------------------------------------
-        const int size = 20;
         ICollection<User> data = UserBuilder.BuildMany(size);
-        PaginationParameters pagination = new(1, size);
+        PaginationParameters pagination = new(page, size);
 
         // -------------------------------------------------------
         // Act
         // -------------------------------------------------------
-        Page<User> result = data.ToPage(pagination);
+        Page<User> result = data
+            .ToPage(pagination, totalElements);
 
         // -------------------------------------------------------
         // Assert
@@ -45,14 +48,55 @@ public class PageExtensionTests
             .Be(size);
 
         result.Pagination.TotalElements.Should()
-            .Be(size);
+            .Be(totalElements ?? size);
     }
 
     [Fact(DisplayName = nameof(PageExtension)
                         + nameof(PageExtension.ToPage)
-                        + " : ToPage from PaginationParameters"
+                        + " : From PaginationParameters "
+                        + " inform total elements - Success")]
+    public void From_PaginationParameters_Inform_TotalElements_Success()
+    {
+        // -------------------------------------------------------
+        // Arrange
+        // -------------------------------------------------------
+        const int size = 20;
+        const int totalElements = 120;
+        ICollection<User> data = UserBuilder.BuildMany(size);
+        PaginationParameters pagination = new(1, size);
+
+        // -------------------------------------------------------
+        // Act
+        // -------------------------------------------------------
+        Page<User> result = data.ToPage(pagination, totalElements);
+
+        // -------------------------------------------------------
+        // Assert
+        // -------------------------------------------------------
+        result.Should()
+            .NotBeNull();
+
+        result.Data.Should()
+            .NotBeNull();
+
+        result.Pagination.Should()
+            .NotBeNull();
+
+        result.Pagination.Page.Should()
+            .Be(1);
+
+        result.Pagination.PageSize.Should()
+            .Be(size);
+
+        result.Pagination.TotalElements.Should()
+            .Be(totalElements);
+    }
+
+    [Fact(DisplayName = nameof(PageExtension)
+                        + nameof(PageExtension.ToPage)
+                        + " : From PaginationParameters"
                         + " (Invalid Data: Source) - ThrowException")]
-    public void ToPage_From_PaginationParameters_InvalidData_Source_ThrowException()
+    public void From_PaginationParameters_InvalidData_Source_ThrowException()
     {
         // -------------------------------------------------------
         // Arrange
@@ -75,9 +119,9 @@ public class PageExtensionTests
 
     [Fact(DisplayName = nameof(PageExtension)
                         + nameof(PageExtension.ToPage)
-                        + " : ToPage from PaginationParameters"
+                        + " : From PaginationParameters"
                         + " (Invalid Data: Pagination) - ThrowException")]
-    public void ToPage_From_PaginationParameters_InvalidData_Pagination_ThrowException()
+    public void From_PaginationParameters_InvalidData_Pagination_ThrowException()
     {
         // -------------------------------------------------------
         // Arrange
@@ -102,24 +146,24 @@ public class PageExtensionTests
 
     #region From_Parameters
 
-    [Fact(DisplayName = nameof(PageExtension)
-                        + nameof(PageExtension.ToPage)
-                        + " : ToPage from parameters success")]
-    public void ToPage_From_Parameters_Success()
+    [Theory(DisplayName = nameof(PageExtension)
+                          + nameof(PageExtension.ToPage)
+                          + " : From parameters - Success")]
+    [InlineData(20, 1, null)]
+    [InlineData(20, 1, 100)]
+    public void From_Parameters_Success(
+        int size, int page, int? totalElements = null)
     {
         // -------------------------------------------------------
         // Arrange
         // -------------------------------------------------------
-        const int size = 20;
-        const int page = 1;
-        const int pageSize = 20;
-
         ICollection<User> data = UserBuilder.BuildMany(size);
 
         // -------------------------------------------------------
         // Act
         // -------------------------------------------------------
-        Page<User> result = data.ToPage(page, pageSize);
+        Page<User> result = data
+            .ToPage(page, size, totalElements);
 
         // -------------------------------------------------------
         // Assert
@@ -137,60 +181,17 @@ public class PageExtensionTests
             .Be(page);
 
         result.Pagination.PageSize.Should()
-            .Be(pageSize);
-
-        result.Pagination.TotalElements.Should()
             .Be(size);
-    }
-
-    [Fact(DisplayName = nameof(PageExtension)
-                        + nameof(PageExtension.ToPage)
-                        + " : ToPage from parameters "
-                        + " inform total elements success")]
-    public void ToPage_From_Parameters_Inform_TotalElements_Success()
-    {
-        // -------------------------------------------------------
-        // Arrange
-        // -------------------------------------------------------
-        const int size = 20;
-        const int page = 1;
-        const int pageSize = 20;
-        const int totalElements = 120;
-
-        ICollection<User> data = UserBuilder.BuildMany(size);
-
-        // -------------------------------------------------------
-        // Act
-        // -------------------------------------------------------
-        Page<User> result = data.ToPage(page, pageSize, totalElements);
-
-        // -------------------------------------------------------
-        // Assert
-        // -------------------------------------------------------
-        result.Should()
-            .NotBeNull();
-
-        result.Data.Should()
-            .NotBeNull();
-
-        result.Pagination.Should()
-            .NotBeNull();
-
-        result.Pagination.Page.Should()
-            .Be(page);
-
-        result.Pagination.PageSize.Should()
-            .Be(pageSize);
 
         result.Pagination.TotalElements.Should()
-            .Be(totalElements);
+            .Be(totalElements ?? size);
     }
 
     [Fact(DisplayName = nameof(PageExtension)
                         + nameof(PageExtension.ToPage)
-                        + " : ToPage from parameters"
+                        + " : From parameters"
                         + " (Invalid Data) - ThrowException")]
-    public void ToPage_From_Parameters_InvalidData_ThrowException()
+    public void From_Parameters_InvalidData_ThrowException()
     {
         // -------------------------------------------------------
         // Arrange

@@ -5,29 +5,32 @@ using JacksonVeroneze.NET.Pagination.Util.Builders;
 namespace JacksonVeroneze.NET.Pagination.UnitTests;
 
 [ExcludeFromCodeCoverage]
-public class PageExtensionTests2
+public class PageMemoryExtensionTests
 {
     #region From_PaginationParameters
 
-    [Fact(DisplayName = nameof(PageExtension2)
-                        + nameof(PageExtension2.ToPage2)
-                        + " : ToPage2 from PaginationParameters success")]
-    public void ToPage2_From_PaginationParameters_Success()
+    [Theory(DisplayName = nameof(PageMemoryExtension)
+                          + nameof(PageMemoryExtension.ToPageFromMemory)
+                          + " : From PaginationParameters - Success")]
+    [InlineData(20, 2, 5, 200)]
+    [InlineData(50, 2, 10, 100)]
+    [InlineData(150, 5, 20, null)]
+    [InlineData(180, 10, 2, null)]
+    public void From_PaginationParameters_Success(
+        int size, int page, int pageSize,
+        int? totalElements = null)
     {
         // -------------------------------------------------------
         // Arrange
         // -------------------------------------------------------
-        const int size = 150;
-        const int page = 2;
-        const int pageSize = 20;
-
         ICollection<User> data = UserBuilder.BuildMany(size);
         PaginationParameters pagination = new(page, pageSize);
 
         // -------------------------------------------------------
         // Act
         // -------------------------------------------------------
-        Page<User> result = data.ToPage2(pagination);
+        Page<User> result = data
+            .ToPageFromMemory(pagination, totalElements);
 
         // -------------------------------------------------------
         // Assert
@@ -56,14 +59,14 @@ public class PageExtensionTests2
             .Be(pageSize);
 
         result.Pagination.TotalElements.Should()
-            .Be(size);
+            .Be(totalElements ?? size);
     }
 
-    [Fact(DisplayName = nameof(PageExtension2)
-                        + nameof(PageExtension2.ToPage2)
-                        + " : ToPage2 from PaginationParameters"
+    [Fact(DisplayName = nameof(PageMemoryExtension)
+                        + nameof(PageMemoryExtension.ToPageFromMemory)
+                        + " : From PaginationParameters"
                         + " (Invalid Data: Source) - ThrowException")]
-    public void ToPage2_From_PaginationParameters_InvalidData_Source_ThrowException()
+    public void From_PaginationParameters_InvalidData_Source_ThrowException()
     {
         // -------------------------------------------------------
         // Arrange
@@ -75,7 +78,7 @@ public class PageExtensionTests2
         // -------------------------------------------------------
         // Act
         // -------------------------------------------------------
-        Action action = () => data!.ToPage2(pagination);
+        Action action = () => data!.ToPageFromMemory(pagination);
 
         // -------------------------------------------------------
         // Assert
@@ -84,11 +87,11 @@ public class PageExtensionTests2
             .ThrowExactly<ArgumentNullException>();
     }
 
-    [Fact(DisplayName = nameof(PageExtension2)
-                        + nameof(PageExtension2.ToPage2)
-                        + " : ToToPage2Page from PaginationParameters"
+    [Fact(DisplayName = nameof(PageMemoryExtension)
+                        + nameof(PageMemoryExtension.ToPageFromMemory)
+                        + " : From PaginationParameters"
                         + " (Invalid Data: Pagination) - ThrowException")]
-    public void ToPage2_From_PaginationParameters_InvalidData_Pagination_ThrowException()
+    public void From_PaginationParameters_InvalidData_Pagination_ThrowException()
     {
         // -------------------------------------------------------
         // Arrange
@@ -100,7 +103,7 @@ public class PageExtensionTests2
         // -------------------------------------------------------
         // Act
         // -------------------------------------------------------
-        Action action = () => data.ToPage2(pagination!);
+        Action action = () => data.ToPageFromMemory(pagination!);
 
         // -------------------------------------------------------
         // Assert
