@@ -8,7 +8,7 @@ public static class UserBuilder
         return Factory().Generate();
     }
 
-    public static List<User> BuildMany(int total)
+    public static ICollection<User> BuildMany(int total)
     {
         return Factory().Generate(total);
     }

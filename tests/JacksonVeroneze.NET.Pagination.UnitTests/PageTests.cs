@@ -13,7 +13,7 @@ public class PageTests
         // -------------------------------------------------------
         // Arrange
         // -------------------------------------------------------
-        List<User> data = UserBuilder.BuildMany(10);
+        ICollection<User> data = UserBuilder.BuildMany(10);
         PageInfo pageInfo = new(1, 1, 10);
 
         // -------------------------------------------------------
@@ -41,7 +41,7 @@ public class PageTests
         // -------------------------------------------------------
         // Arrange
         // -------------------------------------------------------
-        List<User>? data = null;
+        ICollection<User>? data = null;
         PageInfo pageInfo = new(1, 1, 10);
 
         // -------------------------------------------------------
@@ -63,7 +63,7 @@ public class PageTests
         // -------------------------------------------------------
         // Arrange
         // -------------------------------------------------------
-        List<User> data = UserBuilder.BuildMany(10);
+        ICollection<User> data = UserBuilder.BuildMany(10);
         PageInfo? pageInfo = null;
 
         // -------------------------------------------------------
