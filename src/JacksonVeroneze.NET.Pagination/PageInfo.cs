@@ -38,12 +38,24 @@ public class PageInfo
 
     public bool IsLastPage => Page == TotalPages;
 
+    public bool HasNextPage => Page < TotalPages;
+
+    public bool HasBackPage => Page > 1;
+
+    public int? NextPage =>
+        Page == TotalPages ? null : Page + 1;
+
+    public int? BackPage =>
+        Page == 1 ? null : Page - 1;
+
     public override string ToString()
     {
         return $"{nameof(PageInfo)}: " +
                $"Page: {Page} - PageSize: {PageSize} - " +
                $"TotalElements: {TotalElements} - OrderBy: {OrderBy} - " +
                $"Direction: {Direction} - TotalPages: {TotalPages} - " +
-               $"IsFirstPage: {IsFirstPage} - IsLastPage: {IsLastPage}";
+               $"IsFirstPage: {IsFirstPage} - IsLastPage: {IsLastPage}" +
+               $"HasNextPage: {HasNextPage} - HasBackPage: {HasBackPage}" +
+               $"NextPage: {NextPage} - BackPage: {BackPage}";
     }
 }
