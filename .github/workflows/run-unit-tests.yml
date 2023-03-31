@@ -24,7 +24,7 @@ jobs:
         run: dotnet restore --no-cache
 
       - name: Build
-        run: dotnet build ./src/JacksonVeroneze.NET.Pagination/JacksonVeroneze.NET.Pagination.csproj -c Release --no-restore
+        run: dotnet build -c Release --no-restore
 
       - name: Test
         run: dotnet test -c Release --no-restore /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
