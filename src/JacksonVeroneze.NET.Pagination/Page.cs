@@ -2,7 +2,7 @@ namespace JacksonVeroneze.NET.Pagination;
 
 public class Page<T>
 {
-    public Page(ICollection<T> data, PageInfo pagination)
+    public Page(IEnumerable<T> data, PageInfo pagination)
     {
         ArgumentNullException.ThrowIfNull(data, nameof(data));
         ArgumentNullException.ThrowIfNull(pagination, nameof(pagination));
@@ -11,7 +11,7 @@ public class Page<T>
         Pagination = pagination;
     }
 
-    public ICollection<T> Data { get; }
+    public IEnumerable<T> Data { get; }
 
     public PageInfo Pagination { get; }
 }
