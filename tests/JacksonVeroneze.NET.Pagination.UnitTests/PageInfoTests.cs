@@ -3,19 +3,19 @@ namespace JacksonVeroneze.NET.Pagination.UnitTests;
 [ExcludeFromCodeCoverage]
 public class PageInfoTests
 {
-    [Fact(DisplayName = nameof(PageInfo)
-                        + " TotalPages success")]
-    public void TotalPages_Success()
+    [Theory(DisplayName = nameof(PageInfo)
+                          + " TotalPages success")]
+    [InlineData(1, 1, 0, 0)]
+    [InlineData(1, 1, 1, 1)]
+    [InlineData(1, 50, 100, 2)]
+    [InlineData(1, 10, 100, 10)]
+    [InlineData(1, 10, 1000, 100)]
+    public void TotalPages_Success(
+        int page, int pageSize, int totalElements,
+        int expected)
     {
         // -------------------------------------------------------
-        // Arrange
-        // -------------------------------------------------------
-        const int page = 1;
-        const int pageSize = 10;
-        const int totalElements = 100;
-
-        // -------------------------------------------------------
-        // Act
+        // Arrange && Act
         // -------------------------------------------------------
         PageInfo pageInfo = new(page, pageSize,
             totalElements, "field", SortDirection.Ascending);
@@ -24,22 +24,20 @@ public class PageInfoTests
         // Assert
         // -------------------------------------------------------
         pageInfo.TotalPages.Should()
-            .Be(10);
+            .Be(expected);
     }
 
-    [Fact(DisplayName = nameof(PageInfo)
-                        + " IsFirstPage success")]
-    public void IsFirstPage_Success()
+    [Theory(DisplayName = nameof(PageInfo)
+                          + " FirstLastPage success")]
+    [InlineData(1, 10, 10, true, true)]
+    [InlineData(1, 10, 100, true, false)]
+    [InlineData(10, 10, 100, false, true)]
+    public void FirstLastPage_Success(
+        int page, int pageSize, int totalElements,
+        bool expectedFirst, bool expectedLast)
     {
         // -------------------------------------------------------
-        // Arrange
-        // -------------------------------------------------------
-        const int page = 1;
-        const int pageSize = 10;
-        const int totalElements = 100;
-
-        // -------------------------------------------------------
-        // Act
+        // Arrange && Act
         // -------------------------------------------------------
         PageInfo pageInfo = new(page, pageSize,
             totalElements, "field", SortDirection.Ascending);
@@ -48,37 +46,56 @@ public class PageInfoTests
         // Assert
         // -------------------------------------------------------
         pageInfo.IsFirstPage.Should()
-            .BeTrue();
+            .Be(expectedFirst);
 
         pageInfo.IsLastPage.Should()
-            .BeFalse();
+            .Be(expectedLast);
     }
 
-    [Fact(DisplayName = nameof(PageInfo)
-                        + " IsLastPage success")]
-    public void IsLastPage_Success()
+    [Theory(DisplayName = nameof(PageInfo)
+                          + " HasNextBackPage success")]
+    [InlineData(1, 10, 10, false, false)]
+    [InlineData(1, 10, 100, true, false)]
+    [InlineData(10, 10, 100, false, true)]
+    public void HasNextBackPage_Success(
+        int page, int pageSize, int totalElements,
+        bool expectedHasNext, bool expectedHasBack)
     {
-        // -------------------------------------------------------
-        // Arrange
-        // -------------------------------------------------------
-        const int page = 10;
-        const int pageSize = 10;
-        const int totalElements = 100;
-
-        // -------------------------------------------------------
-        // Act
-        // -------------------------------------------------------
         PageInfo pageInfo = new(page, pageSize,
             totalElements, "field", SortDirection.Ascending);
 
         // -------------------------------------------------------
         // Assert
         // -------------------------------------------------------
-        pageInfo.IsFirstPage.Should()
-            .BeFalse();
+        pageInfo.HasNextPage.Should()
+            .Be(expectedHasNext);
 
-        pageInfo.IsLastPage.Should()
-            .BeTrue();
+        pageInfo.HasBackPage.Should()
+            .Be(expectedHasBack);
+    }
+
+    [Theory(DisplayName = nameof(PageInfo)
+                          + " NextBackPage success")]
+    [InlineData(1, 10, 10, null, null)]
+    [InlineData(1, 10, 100, 2, null)]
+    [InlineData(10, 10, 100, null, 9)]
+    [InlineData(25, 10, 250, null, 24)]
+    [InlineData(20, 10, 250, 21, 19)]
+    public void NextBackPage_Success(
+        int page, int pageSize, int totalElements,
+        int? nextPage, int? backPage)
+    {
+        PageInfo pageInfo = new(page, pageSize,
+            totalElements, "field", SortDirection.Ascending);
+
+        // -------------------------------------------------------
+        // Assert
+        // -------------------------------------------------------
+        pageInfo.NextPage.Should()
+            .Be(nextPage);
+
+        pageInfo.BackPage.Should()
+            .Be(backPage);
     }
 
     [Theory(DisplayName = nameof(PageInfo)
