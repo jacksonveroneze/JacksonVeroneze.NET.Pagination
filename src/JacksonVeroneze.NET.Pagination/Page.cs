@@ -11,7 +11,7 @@ public class Page<T>
         Pagination = pagination;
     }
 
-    public IEnumerable<T> Data { get; }
+    public IEnumerable<T> Data { get; init; }
 
-    public PageInfo Pagination { get; }
+    public PageInfo Pagination { get; init; }
 }
