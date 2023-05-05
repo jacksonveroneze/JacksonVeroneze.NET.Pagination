@@ -5,7 +5,7 @@ on:
     branches: [ development, main ]
 
 env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
 jobs:
   tests:
@@ -21,7 +21,7 @@ jobs:
           dotnet-version: '7.0.x'
 
       - name: Restore dependencies
-        run: dotnet restore --no-cache
+        run: dotnet restore
 
       - name: Build
         run: dotnet build -c Release --no-restore
@@ -32,4 +32,4 @@ jobs:
       - uses: samspills/assign-pr-to-author@v1.0
         if: github.event_name == 'pull_request' && github.event.action == 'opened'
         with:
-          repo-token: '${{ secrets.GITHUB_TOKEN }}'
+          repo-token: '${{secrets.GITHUB_TOKEN}}'

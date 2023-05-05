@@ -22,6 +22,10 @@ indent_size = 2
 [*.csproj]
 indent_size = 2
 
+# JSON files
+[*.json]
+indent_size = 2
+
 # C# files
 [*.cs]
 
