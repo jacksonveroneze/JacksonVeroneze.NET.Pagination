@@ -2,6 +2,10 @@ namespace JacksonVeroneze.NET.Pagination;
 
 public class PageInfo
 {
+    public PageInfo()
+    {
+    }
+
     public PageInfo(int page, int pageSize, int totalElements)
     {
         Page = page;
