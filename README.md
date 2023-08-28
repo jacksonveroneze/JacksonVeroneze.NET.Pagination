@@ -1,1 +1,1 @@
-# JacksonVeroneze.NET.EntityFramework
+# JacksonVeroneze.NET.Pagination
