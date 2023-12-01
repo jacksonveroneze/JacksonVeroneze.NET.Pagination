@@ -8,8 +8,8 @@ public static class PageExtension
         int? totalElements = null)
         where TType : class
     {
-        ArgumentNullException.ThrowIfNull(source, nameof(source));
-        ArgumentNullException.ThrowIfNull(pagination, nameof(pagination));
+        ArgumentNullException.ThrowIfNull(source);
+        ArgumentNullException.ThrowIfNull(pagination);
 
         PageInfo pageInfo = new(pagination.Page,
             pagination.PageSize,
@@ -26,7 +26,7 @@ public static class PageExtension
         int? totalElements = null)
         where TType : class
     {
-        ArgumentNullException.ThrowIfNull(source, nameof(source));
+        ArgumentNullException.ThrowIfNull(source);
 
         PageInfo pageInfo = new(page, pageSize,
             totalElements ?? source.Count);

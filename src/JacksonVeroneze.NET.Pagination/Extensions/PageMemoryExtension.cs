@@ -8,8 +8,8 @@ public static class PageMemoryExtension
         int? totalElements = null)
         where TType : class
     {
-        ArgumentNullException.ThrowIfNull(source, nameof(source));
-        ArgumentNullException.ThrowIfNull(pagination, nameof(pagination));
+        ArgumentNullException.ThrowIfNull(source);
+        ArgumentNullException.ThrowIfNull(pagination);
 
         return GetPage(source, pagination, totalElements);
     }
