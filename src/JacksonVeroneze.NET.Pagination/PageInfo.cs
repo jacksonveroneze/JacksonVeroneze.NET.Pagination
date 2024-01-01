@@ -30,7 +30,8 @@ public class PageInfo
         get => _page;
         init
         {
-            Guard.Against.NegativeOrZero(value, nameof(Page));
+            Guard.Against.NegativeOrZero(
+                value, nameof(Page));
 
             _page = value;
         }
@@ -41,7 +42,8 @@ public class PageInfo
         get => _pageSize;
         init
         {
-            Guard.Against.NegativeOrZero(value, nameof(PageSize));
+            Guard.Against.NegativeOrZero(
+                value, nameof(PageSize));
 
             _pageSize = value;
         }
@@ -52,7 +54,8 @@ public class PageInfo
         get => _totalElements;
         init
         {
-            Guard.Against.Negative(value, nameof(TotalElements));
+            Guard.Against.Negative(
+                value, nameof(TotalElements));
 
             _totalElements = value;
         }
@@ -78,15 +81,4 @@ public class PageInfo
 
     public int? BackPage =>
         Page == 1 ? null : Page - 1;
-
-    public override string ToString()
-    {
-        return $"{nameof(PageInfo)}: " +
-               $"Page: {Page} - PageSize: {PageSize} - " +
-               $"TotalElements: {TotalElements} - OrderBy: {OrderBy} - " +
-               $"Direction: {Direction} - TotalPages: {TotalPages} - " +
-               $"IsFirstPage: {IsFirstPage} - IsLastPage: {IsLastPage}" +
-               $"HasNextPage: {HasNextPage} - HasBackPage: {HasBackPage}" +
-               $"NextPage: {NextPage} - BackPage: {BackPage}";
-    }
 }
