@@ -41,13 +41,16 @@ public class PageTests
         // -------------------------------------------------------
         // Arrange
         // -------------------------------------------------------
-        ICollection<User>? data = null;
+        IReadOnlyCollection<User>? data = null;
         PageInfo pageInfo = new(1, 1, 10);
 
         // -------------------------------------------------------
         // Act
         // -------------------------------------------------------
-        Action action = () => new Page<User>(data!, pageInfo);
+        Action action = () =>
+        {
+            Page<User> _ = new (data!, pageInfo);
+        };
 
         // -------------------------------------------------------
         // Assert

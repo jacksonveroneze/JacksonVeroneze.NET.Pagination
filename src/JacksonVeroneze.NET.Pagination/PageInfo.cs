@@ -1,13 +1,13 @@
 namespace JacksonVeroneze.NET.Pagination;
 
-public class PageInfo
+public record PageInfo
 {
-    public PageInfo()
-    {
-    }
-
     public PageInfo(int page, int pageSize, int totalElements)
     {
+        Guard.Against.NegativeOrZero(page, nameof(page));
+        Guard.Against.NegativeOrZero(pageSize, nameof(pageSize));
+        Guard.Against.Negative(totalElements, nameof(totalElements));
+
         Page = page;
         PageSize = pageSize;
         TotalElements = totalElements;
@@ -21,49 +21,13 @@ public class PageInfo
         Direction = direction;
     }
 
-    private readonly int _page;
-    private readonly int _pageSize;
-    private readonly int _totalElements;
+    public int Page { get; }
+    public int PageSize { get; }
+    public int TotalElements { get; }
 
-    public int Page
-    {
-        get => _page;
-        init
-        {
-            Guard.Against.NegativeOrZero(
-                value, nameof(Page));
+    public string? OrderBy { get; }
 
-            _page = value;
-        }
-    }
-
-    public int PageSize
-    {
-        get => _pageSize;
-        init
-        {
-            Guard.Against.NegativeOrZero(
-                value, nameof(PageSize));
-
-            _pageSize = value;
-        }
-    }
-
-    public int TotalElements
-    {
-        get => _totalElements;
-        init
-        {
-            Guard.Against.Negative(
-                value, nameof(TotalElements));
-
-            _totalElements = value;
-        }
-    }
-
-    public string? OrderBy { get; init; }
-
-    public SortDirection? Direction { get; init; }
+    public SortDirection? Direction { get; }
 
     public int TotalPages =>
         TotalElements > 0 ? (int)Math.Ceiling(TotalElements / (decimal)PageSize) : 0;

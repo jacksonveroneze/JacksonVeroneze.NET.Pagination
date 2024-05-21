@@ -1,6 +1,6 @@
 namespace JacksonVeroneze.NET.Pagination;
 
-public class PaginationParameters
+public record PaginationParameters
 {
     public PaginationParameters(int page, int pageSize)
     {

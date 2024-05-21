@@ -21,7 +21,7 @@ public static class PageMemoryExtension
     {
         int count = totalElements ?? source.Count;
 
-        ICollection<TType> pageItems =
+        IEnumerable<TType> pageItems =
             GetPageItems(source, pagination);
 
         PageInfo pageInfo = new(pagination.Page,
@@ -30,13 +30,12 @@ public static class PageMemoryExtension
         return new Page<TType>(pageItems, pageInfo);
     }
 
-    private static ICollection<TType> GetPageItems<TType>(
+    private static IEnumerable<TType> GetPageItems<TType>(
         IEnumerable<TType> source,
         PaginationParameters pagination)
     {
         return source
             .Skip((pagination.Page - 1) * pagination.PageSize)
-            .Take(pagination.PageSize)
-            .ToArray();
+            .Take(pagination.PageSize);
     }
 }
