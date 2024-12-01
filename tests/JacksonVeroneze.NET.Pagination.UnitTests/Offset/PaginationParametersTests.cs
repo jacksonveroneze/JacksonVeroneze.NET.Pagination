@@ -1,4 +1,7 @@
-namespace JacksonVeroneze.NET.Pagination.UnitTests;
+using JacksonVeroneze.NET.Pagination.Common;
+using JacksonVeroneze.NET.Pagination.Offset;
+
+namespace JacksonVeroneze.NET.Pagination.UnitTests.Offset;
 
 [ExcludeFromCodeCoverage]
 public class PaginationParametersTests
@@ -60,8 +63,11 @@ public class PaginationParametersTests
         // -------------------------------------------------------
         // Arrange && Act
         // -------------------------------------------------------
-        Action action = () => new PaginationParameters(
-            page, pageSize, "field", SortDirection.Ascending);
+        Action action = () =>
+        {
+            PaginationParameters _ = new(
+                page, pageSize, "field", SortDirection.Ascending);
+        };
 
         // -------------------------------------------------------
         // Assert

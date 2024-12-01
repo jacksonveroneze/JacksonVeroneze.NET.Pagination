@@ -1,8 +1,9 @@
-using JacksonVeroneze.NET.Pagination.Extensions;
+using JacksonVeroneze.NET.Pagination.Offset;
+using JacksonVeroneze.NET.Pagination.Offset.Extensions;
 using JacksonVeroneze.NET.Pagination.Util;
 using JacksonVeroneze.NET.Pagination.Util.Builders;
 
-namespace JacksonVeroneze.NET.Pagination.UnitTests;
+namespace JacksonVeroneze.NET.Pagination.UnitTests.Offset;
 
 [ExcludeFromCodeCoverage]
 public class PageExtensionTests
@@ -38,16 +39,16 @@ public class PageExtensionTests
         result.Data.Should()
             .NotBeNull();
 
-        result.Pagination.Should()
+        result.PageInfo.Should()
             .NotBeNull();
 
-        result.Pagination.Page.Should()
+        result.PageInfo.Page.Should()
             .Be(1);
 
-        result.Pagination.PageSize.Should()
+        result.PageInfo.PageSize.Should()
             .Be(size);
 
-        result.Pagination.TotalElements.Should()
+        result.PageInfo.TotalElements.Should()
             .Be(totalElements ?? size);
     }
 
@@ -79,16 +80,16 @@ public class PageExtensionTests
         result.Data.Should()
             .NotBeNull();
 
-        result.Pagination.Should()
+        result.PageInfo.Should()
             .NotBeNull();
 
-        result.Pagination.Page.Should()
+        result.PageInfo.Page.Should()
             .Be(1);
 
-        result.Pagination.PageSize.Should()
+        result.PageInfo.PageSize.Should()
             .Be(size);
 
-        result.Pagination.TotalElements.Should()
+        result.PageInfo.TotalElements.Should()
             .Be(totalElements);
     }
 
@@ -174,16 +175,16 @@ public class PageExtensionTests
         result.Data.Should()
             .NotBeNull();
 
-        result.Pagination.Should()
+        result.PageInfo.Should()
             .NotBeNull();
 
-        result.Pagination.Page.Should()
+        result.PageInfo.Page.Should()
             .Be(page);
 
-        result.Pagination.PageSize.Should()
+        result.PageInfo.PageSize.Should()
             .Be(size);
 
-        result.Pagination.TotalElements.Should()
+        result.PageInfo.TotalElements.Should()
             .Be(totalElements ?? size);
     }
 

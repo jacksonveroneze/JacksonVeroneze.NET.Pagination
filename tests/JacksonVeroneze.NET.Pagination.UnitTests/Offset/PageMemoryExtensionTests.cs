@@ -1,8 +1,9 @@
-using JacksonVeroneze.NET.Pagination.Extensions;
+using JacksonVeroneze.NET.Pagination.Offset;
+using JacksonVeroneze.NET.Pagination.Offset.Extensions;
 using JacksonVeroneze.NET.Pagination.Util;
 using JacksonVeroneze.NET.Pagination.Util.Builders;
 
-namespace JacksonVeroneze.NET.Pagination.UnitTests;
+namespace JacksonVeroneze.NET.Pagination.UnitTests.Offset;
 
 [ExcludeFromCodeCoverage]
 public class PageMemoryExtensionTests
@@ -49,16 +50,16 @@ public class PageMemoryExtensionTests
         result.Data.Should()
             .BeEquivalentTo(elementsCheck);
 
-        result.Pagination.Should()
+        result.PageInfo.Should()
             .NotBeNull();
 
-        result.Pagination.Page.Should()
+        result.PageInfo.Page.Should()
             .Be(page);
 
-        result.Pagination.PageSize.Should()
+        result.PageInfo.PageSize.Should()
             .Be(pageSize);
 
-        result.Pagination.TotalElements.Should()
+        result.PageInfo.TotalElements.Should()
             .Be(totalElements ?? size);
     }
 

@@ -1,26 +1,24 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <LangVersion>latest</LangVersion>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Bogus" Version="35.5.1" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.4" />
-    <PackageReference Include="Moq" Version="4.20.70"/>
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\JacksonVeroneze.NET.Pagination\JacksonVeroneze.NET.Pagination.csproj"/>
+    <PackageReference Include="Bogus" Version="35.6.1"/>
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.4"/>
+    <PackageReference Include="Moq" Version="4.20.72"/>
   </ItemGroup>
 
   <ItemGroup>
     <Using Include="Bogus"/>
     <Using Include="Moq"/>
     <Using Include="System.Diagnostics.CodeAnalysis"/>
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\JacksonVeroneze.NET.Pagination\JacksonVeroneze.NET.Pagination.csproj"/>
   </ItemGroup>
 
 </Project>
