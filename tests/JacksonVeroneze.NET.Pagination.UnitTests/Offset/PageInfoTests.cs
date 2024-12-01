@@ -1,4 +1,7 @@
-namespace JacksonVeroneze.NET.Pagination.UnitTests;
+using JacksonVeroneze.NET.Pagination.Common;
+using JacksonVeroneze.NET.Pagination.Offset;
+
+namespace JacksonVeroneze.NET.Pagination.UnitTests.Offset;
 
 [ExcludeFromCodeCoverage]
 public class PageInfoTests
@@ -111,8 +114,11 @@ public class PageInfoTests
         // -------------------------------------------------------
         // Arrange && Act
         // -------------------------------------------------------
-        Action action = () => new PageInfo(page, pageSize,
-            totalElements, "field", SortDirection.Ascending);
+        Action action = () =>
+        {
+            PageInfo _ = new(page, pageSize,
+                totalElements, "field", SortDirection.Ascending);
+        };
 
         // -------------------------------------------------------
         // Assert

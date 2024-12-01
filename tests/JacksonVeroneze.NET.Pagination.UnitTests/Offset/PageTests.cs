@@ -1,7 +1,8 @@
+using JacksonVeroneze.NET.Pagination.Offset;
 using JacksonVeroneze.NET.Pagination.Util;
 using JacksonVeroneze.NET.Pagination.Util.Builders;
 
-namespace JacksonVeroneze.NET.Pagination.UnitTests;
+namespace JacksonVeroneze.NET.Pagination.UnitTests.Offset;
 
 [ExcludeFromCodeCoverage]
 public class PageTests
@@ -30,7 +31,7 @@ public class PageTests
         page.Data.Should()
             .NotBeNull();
 
-        page.Pagination.Should()
+        page.PageInfo.Should()
             .NotBeNull();
     }
 
@@ -49,7 +50,7 @@ public class PageTests
         // -------------------------------------------------------
         Action action = () =>
         {
-            Page<User> _ = new (data!, pageInfo);
+            Page<User> _ = new(data!, pageInfo);
         };
 
         // -------------------------------------------------------
@@ -72,7 +73,10 @@ public class PageTests
         // -------------------------------------------------------
         // Act
         // -------------------------------------------------------
-        Action action = () => new Page<User>(data, pageInfo!);
+        Action action = () =>
+        {
+            Page<User> _ = new(data, pageInfo!);
+        };
 
         // -------------------------------------------------------
         // Assert

@@ -1,4 +1,4 @@
-namespace JacksonVeroneze.NET.Pagination.Extensions;
+namespace JacksonVeroneze.NET.Pagination.Offset.Extensions;
 
 public static class PageExtension
 {

@@ -1,4 +1,6 @@
-namespace JacksonVeroneze.NET.Pagination;
+using JacksonVeroneze.NET.Pagination.Common;
+
+namespace JacksonVeroneze.NET.Pagination.Offset;
 
 public record PageInfo
 {

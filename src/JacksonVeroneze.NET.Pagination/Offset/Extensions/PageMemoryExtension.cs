@@ -1,4 +1,4 @@
-namespace JacksonVeroneze.NET.Pagination.Extensions;
+namespace JacksonVeroneze.NET.Pagination.Offset.Extensions;
 
 public static class PageMemoryExtension
 {
@@ -18,6 +18,7 @@ public static class PageMemoryExtension
         ICollection<TType> source,
         PaginationParameters pagination,
         int? totalElements = null)
+        where TType : class
     {
         int count = totalElements ?? source.Count;
 
