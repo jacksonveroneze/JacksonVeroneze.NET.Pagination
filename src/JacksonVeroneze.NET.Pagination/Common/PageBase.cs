@@ -6,18 +6,23 @@ public abstract record PageBase<TEntity, TPageInfo>
     where TEntity : class
     where TPageInfo : class
 {
+    protected PageBase(TEntity[]? data, TPageInfo pageInfo) :
+        this(data?.AsReadOnly(), pageInfo)
+    {
+    }
+
     protected PageBase(List<TEntity>? data, TPageInfo pageInfo) :
         this(data?.AsReadOnly(), pageInfo)
     {
     }
 
-    protected PageBase(ICollection<TEntity> data, TPageInfo pageInfo) :
-        this(((List<TEntity>)data)?.AsReadOnly(), pageInfo)
+    protected PageBase(ICollection<TEntity>? data, TPageInfo pageInfo) :
+        this(data?.ToList() ?? [], pageInfo)
     {
     }
 
-    protected PageBase(IEnumerable<TEntity> data, TPageInfo pageInfo) :
-        this((data.ToList()).AsReadOnly(), pageInfo)
+    protected PageBase(IEnumerable<TEntity>? data, TPageInfo pageInfo) :
+        this(data?.ToList() ?? [], pageInfo)
     {
     }
 

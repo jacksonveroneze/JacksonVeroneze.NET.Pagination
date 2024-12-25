@@ -14,7 +14,7 @@ public class PageTests
         // -------------------------------------------------------
         // Arrange
         // -------------------------------------------------------
-        ICollection<User> data = UserBuilder.BuildMany(10);
+        ICollection<User> data = UserBuilder.BuildMany(10).ToArray();
         PageInfo pageInfo = new(1, 1, 10);
 
         // -------------------------------------------------------

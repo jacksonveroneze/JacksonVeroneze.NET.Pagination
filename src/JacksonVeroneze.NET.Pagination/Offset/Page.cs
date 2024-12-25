@@ -1,4 +1,5 @@
 using System.Collections.ObjectModel;
+
 using JacksonVeroneze.NET.Pagination.Common;
 
 namespace JacksonVeroneze.NET.Pagination.Offset;
@@ -6,6 +7,11 @@ namespace JacksonVeroneze.NET.Pagination.Offset;
 public record Page<TEntity> : PageBase<TEntity, PageInfo>
     where TEntity : class
 {
+    public Page(TEntity[] data, PageInfo pageInfo)
+        : base(data, pageInfo)
+    {
+    }
+    
     public Page(List<TEntity> data, PageInfo pageInfo)
         : base(data, pageInfo)
     {
