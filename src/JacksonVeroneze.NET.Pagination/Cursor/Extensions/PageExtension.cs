@@ -3,7 +3,7 @@ namespace JacksonVeroneze.NET.Pagination.Cursor.Extensions;
 public static class PageExtension
 {
     public static Page<TType> ToPage<TType>(
-        this ICollection<TType> source,
+        this IEnumerable<TType> source,
         bool hasMore,
         string? cursor)
         where TType : class
