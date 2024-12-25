@@ -9,7 +9,7 @@
     <PackageDescription>JacksonVeroneze.NET.Pagination</PackageDescription>
     <RepositoryUrl>https://github.com/jacksonveroneze/JacksonVeroneze.NET.Pagination</RepositoryUrl>
     <Title>JacksonVeroneze.NET.Pagination</Title>
-    <Description>Pacote utilizado para commons do EF.</Description>
+    <Description>Pacote utilizado para paginação.</Description>
     <PackageProjectUrl>JacksonVeroneze.NET.Pagination</PackageProjectUrl>
     <PackageLicenseUrl>JacksonVeroneze.NET.Pagination/blob/main/LICENSE</PackageLicenseUrl>
     <Copyright>Jackson Veroneze</Copyright>
