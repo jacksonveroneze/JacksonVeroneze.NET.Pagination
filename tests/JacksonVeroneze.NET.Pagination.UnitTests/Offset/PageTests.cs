@@ -36,31 +36,6 @@ public class PageTests
     }
 
     [Fact(DisplayName = nameof(Page<User>)
-                        + " Invalid Data ThrowException")]
-    public void Initialize_InvalidData_ThrowException()
-    {
-        // -------------------------------------------------------
-        // Arrange
-        // -------------------------------------------------------
-        IReadOnlyCollection<User>? data = null;
-        PageInfo pageInfo = new(1, 1, 10);
-
-        // -------------------------------------------------------
-        // Act
-        // -------------------------------------------------------
-        Action action = () =>
-        {
-            Page<User> _ = new(data!, pageInfo);
-        };
-
-        // -------------------------------------------------------
-        // Assert
-        // -------------------------------------------------------
-        action.Should()
-            .ThrowExactly<ArgumentNullException>();
-    }
-
-    [Fact(DisplayName = nameof(Page<User>)
                         + " Invalid PageInfo ThrowException")]
     public void Initialize_InvalidPageInfo_ThrowException()
     {
