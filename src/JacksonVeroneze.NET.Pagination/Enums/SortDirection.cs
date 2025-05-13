@@ -1,4 +1,4 @@
-namespace JacksonVeroneze.NET.Pagination.Common;
+namespace JacksonVeroneze.NET.Pagination.Enums;
 
 public enum SortDirection
 {
