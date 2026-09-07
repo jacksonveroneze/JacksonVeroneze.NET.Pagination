@@ -1,10 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <IsPackable>false</IsPackable>
-  </PropertyGroup>
-  
-  <PropertyGroup>
     <OpenApiGenerateDocuments>false</OpenApiGenerateDocuments>
     <PackageId>JacksonVeroneze.NET.Pagination</PackageId>
     <Version>1.0.0</Version>
@@ -13,7 +9,7 @@
     <PackageDescription>JacksonVeroneze.NET.Pagination</PackageDescription>
     <RepositoryUrl>https://github.com/jacksonveroneze/JacksonVeroneze.NET.Pagination</RepositoryUrl>
     <Title>JacksonVeroneze.NET.Pagination</Title>
-    <Description>Pacote utilizado para commons do EF.</Description>
+    <Description>Pacote utilizado para paginação.</Description>
     <PackageProjectUrl>JacksonVeroneze.NET.Pagination</PackageProjectUrl>
     <PackageLicenseUrl>JacksonVeroneze.NET.Pagination/blob/main/LICENSE</PackageLicenseUrl>
     <Copyright>Jackson Veroneze</Copyright>

@@ -1,4 +1,5 @@
 using JacksonVeroneze.NET.Pagination.Common;
+using JacksonVeroneze.NET.Pagination.Enums;
 using JacksonVeroneze.NET.Pagination.Offset;
 
 namespace JacksonVeroneze.NET.Pagination.UnitTests.Offset;

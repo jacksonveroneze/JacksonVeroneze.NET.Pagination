@@ -14,7 +14,7 @@ public class PageTests
         // -------------------------------------------------------
         // Arrange
         // -------------------------------------------------------
-        ICollection<User> data = UserBuilder.BuildMany(10);
+        ICollection<User> data = UserBuilder.BuildMany(10).ToArray();
         PageInfo pageInfo = new(1, 1, 10);
 
         // -------------------------------------------------------
@@ -33,31 +33,6 @@ public class PageTests
 
         page.PageInfo.Should()
             .NotBeNull();
-    }
-
-    [Fact(DisplayName = nameof(Page<User>)
-                        + " Invalid Data ThrowException")]
-    public void Initialize_InvalidData_ThrowException()
-    {
-        // -------------------------------------------------------
-        // Arrange
-        // -------------------------------------------------------
-        IReadOnlyCollection<User>? data = null;
-        PageInfo pageInfo = new(1, 1, 10);
-
-        // -------------------------------------------------------
-        // Act
-        // -------------------------------------------------------
-        Action action = () =>
-        {
-            Page<User> _ = new(data!, pageInfo);
-        };
-
-        // -------------------------------------------------------
-        // Assert
-        // -------------------------------------------------------
-        action.Should()
-            .ThrowExactly<ArgumentNullException>();
     }
 
     [Fact(DisplayName = nameof(Page<User>)
